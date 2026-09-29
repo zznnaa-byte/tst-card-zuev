@@ -269,12 +269,33 @@
 }
 </style>
 
+
+<style id="tst-carousel-v15">
+/* v1.5: дом перенесен в карусель; отдельный баннер в шапке удален */
+@media(max-width:700px){
+  .top{grid-template-areas:"left info"!important;padding-bottom:10px!important}
+  .object{display:none!important}
+  .tst-slide img{height:190px!important;object-fit:contain!important;background:#eef1eb!important}
+  .tst-slide img.tst-house-slide{
+    object-fit:cover!important;
+    object-position:center center!important;
+  }
+}
+@media(min-width:701px){
+  .tst-slide img.tst-house-slide{object-fit:contain!important}
+}
+</style>
+
 </head><body><div class="wrap">
 <div class="top"><div class="left"><div class="brand">▰▰▰ ТСТ</div><img class="portrait" src="portrait.jpg"></div>
 <div class="info"><h1>Зуев<br>Алексей Юрьевич</h1><div class="role">Заместитель генерального директора</div><div class="company">ООО «ТСТ»</div><div class="desc">Промышленные технологии<br>для производства термоструктурных<br>самонесущих панелей (ТСП)</div></div>
-<img class="object" src="object.png"></div>
+</div>
 <section class="tst-carousel" aria-label="Технология ТСП">
   <div class="tst-track" id="tstTrack">
+    <figure class="tst-slide">
+      <img src="object.png" alt="Архитектурное решение на основе технологии ТСП" class="tst-house-slide">
+      <figcaption>Архитектурные решения на основе технологии ТСП</figcaption>
+    </figure>
     <figure class="tst-slide">
       <img src="manual-montage.jpg" alt="Ручной монтаж ТСП без специальной техники">
       <figcaption>Ручной монтаж без специальной техники</figcaption>
@@ -294,6 +315,7 @@
       <button class="tst-dot active" type="button" aria-label="Фото 1"></button>
       <button class="tst-dot" type="button" aria-label="Фото 2"></button>
       <button class="tst-dot" type="button" aria-label="Фото 3"></button>
+      <button class="tst-dot" type="button" aria-label="Фото 4"></button>
     </div>
     <button class="tst-arrow tst-next" type="button" aria-label="Следующее фото">›</button>
   </div>
