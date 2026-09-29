@@ -207,11 +207,97 @@
 }
 </style>
 
+
+<style id="tst-carousel-v14">
+.tst-carousel{
+  width:100%; box-sizing:border-box; padding:10px 12px 8px;
+  background:#fff; overflow:hidden;
+}
+.tst-track{
+  display:flex; width:100%; overflow-x:auto; overflow-y:hidden;
+  scroll-snap-type:x mandatory; scroll-behavior:smooth;
+  -webkit-overflow-scrolling:touch; scrollbar-width:none;
+  border-radius:18px;
+}
+.tst-track::-webkit-scrollbar{display:none}
+.tst-slide{
+  flex:0 0 100%; width:100%; margin:0; position:relative;
+  scroll-snap-align:start; scroll-snap-stop:always;
+  background:#eef1eb; border-radius:18px; overflow:hidden;
+}
+.tst-slide img{
+  display:block; width:100%; height:300px; object-fit:contain;
+  background:#eef1eb;
+}
+.tst-slide figcaption{
+  position:absolute; left:10px; right:10px; bottom:10px;
+  width:max-content; max-width:calc(100% - 20px);
+  box-sizing:border-box; padding:8px 12px;
+  border-radius:12px; background:rgba(0,98,69,.92);
+  color:#fff; font-weight:800; font-size:15px; line-height:1.15;
+}
+.tst-carousel-nav{
+  display:grid; grid-template-columns:38px 1fr 38px;
+  align-items:center; gap:8px; margin-top:5px;
+}
+.tst-arrow{
+  border:0; background:transparent; color:#086c4d;
+  font-size:30px; line-height:30px; height:32px; padding:0; cursor:pointer;
+}
+.tst-dots{display:flex; justify-content:center; align-items:center; gap:7px}
+.tst-dot{
+  width:8px; height:8px; padding:0; border:0; border-radius:50%;
+  background:#c6ccc8; cursor:pointer;
+}
+.tst-dot.active{width:20px; border-radius:8px; background:#078657}
+
+@media(max-width:700px){
+  .tst-carousel{padding:7px 12px 5px!important}
+  .tst-slide img{height:178px!important}
+  .tst-slide figcaption{
+    left:8px!important; right:8px!important; bottom:8px!important;
+    padding:6px 9px!important; font-size:11.5px!important;
+    border-radius:10px!important;
+  }
+  .tst-carousel-nav{
+    grid-template-columns:30px 1fr 30px!important;
+    margin-top:2px!important;
+  }
+  .tst-arrow{height:27px!important;font-size:26px!important;line-height:25px!important}
+  .tst-dot{width:7px!important;height:7px!important}
+  .tst-dot.active{width:18px!important}
+}
+</style>
+
 </head><body><div class="wrap">
 <div class="top"><div class="left"><div class="brand">▰▰▰ ТСТ</div><img class="portrait" src="portrait.jpg"></div>
 <div class="info"><h1>Зуев<br>Алексей Юрьевич</h1><div class="role">Заместитель генерального директора</div><div class="company">ООО «ТСТ»</div><div class="desc">Промышленные технологии<br>для производства термоструктурных<br>самонесущих панелей (ТСП)</div></div>
 <img class="object" src="object.png"></div>
-<div class="gallery"><img src="panels.png"><div class="ref"><img src="manual-montage.jpg" style="object-position:center 62%"><div class="badge">Ручной монтаж<br>без специальной техники</div></div><img src="joints.jpg" style="object-position:center 45%"></div>
+<section class="tst-carousel" aria-label="Технология ТСП">
+  <div class="tst-track" id="tstTrack">
+    <figure class="tst-slide">
+      <img src="manual-montage.jpg" alt="Ручной монтаж ТСП без специальной техники">
+      <figcaption>Ручной монтаж без специальной техники</figcaption>
+    </figure>
+    <figure class="tst-slide">
+      <img src="panels.png" alt="Термоструктурные самонесущие панели ТСП">
+      <figcaption>Термоструктурные самонесущие панели (ТСП)</figcaption>
+    </figure>
+    <figure class="tst-slide">
+      <img src="joints.jpg" alt="Узел соединения панелей ТСП">
+      <figcaption>Узел соединения панелей</figcaption>
+    </figure>
+  </div>
+  <div class="tst-carousel-nav">
+    <button class="tst-arrow tst-prev" type="button" aria-label="Предыдущее фото">‹</button>
+    <div class="tst-dots" aria-label="Выбор фотографии">
+      <button class="tst-dot active" type="button" aria-label="Фото 1"></button>
+      <button class="tst-dot" type="button" aria-label="Фото 2"></button>
+      <button class="tst-dot" type="button" aria-label="Фото 3"></button>
+    </div>
+    <button class="tst-arrow tst-next" type="button" aria-label="Следующее фото">›</button>
+  </div>
+</section>
 <div class="actions"><div class="phones">
 <div class="card"><div class="head"><div class="bubble">☎</div><div><div class="muted">Основной номер</div><div class="num">+7 (916) 404-33-57</div></div></div><div class="buttons"><a class="btn" href="tel:+79164043357">Позвонить</a><a class="btn wa" href="https://wa.me/79164043357">WhatsApp</a></div></div>
 <div class="card"><div class="head"><div class="bubble orange">☎</div><div><div class="muted">Дополнительный номер</div><div class="num">+7 (962) 455-33-77</div></div></div><div class="buttons"><a class="btn orange" href="tel:+79624553377">Позвонить</a><a class="btn wa" href="https://wa.me/79624553377">WhatsApp</a><a class="btn max" href="https://max.ru/">MAX</a></div></div>
@@ -233,5 +319,39 @@
     <span>Наведите камеру другого телефона</span>
   </div>
 </div>
+
+
+<script>
+(function(){
+  const track = document.getElementById('tstTrack');
+  if(!track) return;
+  const slides = Array.from(track.querySelectorAll('.tst-slide'));
+  const dots = Array.from(document.querySelectorAll('.tst-dot'));
+  const prev = document.querySelector('.tst-prev');
+  const next = document.querySelector('.tst-next');
+
+  function currentIndex(){
+    return Math.max(0, Math.min(slides.length - 1,
+      Math.round(track.scrollLeft / Math.max(1, track.clientWidth))));
+  }
+  function setActive(i){
+    dots.forEach((d,n)=>d.classList.toggle('active', n===i));
+  }
+  function go(i){
+    i = Math.max(0, Math.min(slides.length - 1, i));
+    track.scrollTo({left:i * track.clientWidth, behavior:'smooth'});
+    setActive(i);
+  }
+  let raf = 0;
+  track.addEventListener('scroll', ()=>{
+    cancelAnimationFrame(raf);
+    raf = requestAnimationFrame(()=>setActive(currentIndex()));
+  }, {passive:true});
+  dots.forEach((d,i)=>d.addEventListener('click', ()=>go(i)));
+  prev.addEventListener('click', ()=>go(currentIndex()-1));
+  next.addEventListener('click', ()=>go(currentIndex()+1));
+  window.addEventListener('resize', ()=>go(currentIndex()));
+})();
+</script>
 
 </body></html>
