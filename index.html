@@ -10,46 +10,172 @@
 .grid{display:grid;grid-template-columns:repeat(4,1fr);gap:11px;margin-top:13px}.tile{display:flex;gap:10px;align-items:center;text-decoration:none;color:#092b55}.tile b{display:block}.tile span{font-size:13px;color:#728095}.blue{color:#087fe1!important}
 @media(max-width:850px){.top{grid-template-columns:1fr}.info{padding:10px 20px 25px;text-align:center}.object{height:270px}.gallery{grid-template-columns:1fr}.phones{grid-template-columns:1fr}.grid{grid-template-columns:1fr 1fr}}
 </style>
-<style>
-.qr-action{font:inherit;text-align:left;border:0;cursor:pointer;width:100%}
-.qr-modal{display:none;position:fixed;inset:0;background:rgba(0,25,18,.72);z-index:9999;align-items:center;justify-content:center;padding:24px}
+
+
+
+<style id="tst-mobile-v12">
+@media (max-width:700px){
+  *{box-sizing:border-box}
+  html,body{margin:0!important;padding:0!important;overflow-x:hidden!important}
+  body{background:#f4efe4!important}
+  .wrap{
+    width:100%!important;max-width:430px!important;margin:0 auto!important;
+    background:#fffdf8!important;overflow:hidden!important;
+  }
+
+  /* Верх: компактная визитка */
+  .hero{
+    display:flex!important;flex-direction:column!important;
+    padding:16px 16px 10px!important;gap:10px!important;
+  }
+  .brand{order:1!important;margin:0 auto!important;max-width:250px!important}
+  .brand img{max-width:100%!important;height:auto!important}
+  .profile{
+    order:2!important;display:grid!important;
+    grid-template-columns:104px minmax(0,1fr)!important;
+    align-items:center!important;gap:14px!important;
+    width:100%!important;margin:0!important;padding:0!important;
+  }
+  .portrait{
+    width:104px!important;height:104px!important;min-width:104px!important;
+    margin:0!important;border-radius:50%!important;overflow:hidden!important;
+  }
+  .portrait img{width:100%!important;height:100%!important;object-fit:cover!important}
+  .identity{min-width:0!important;text-align:left!important;margin:0!important;padding:0!important}
+  .identity h1{
+    font-size:28px!important;line-height:.98!important;letter-spacing:-.6px!important;
+    margin:0 0 7px!important;text-align:left!important;
+  }
+  .identity .role{
+    font-size:13px!important;line-height:1.12!important;margin:0 0 5px!important;
+    text-align:left!important;
+  }
+  .identity .company{font-size:14px!important;line-height:1.15!important;margin:0 0 4px!important}
+  .identity .desc{
+    font-size:12.5px!important;line-height:1.2!important;margin:0!important;
+    display:block!important;
+  }
+
+  /* Готовый объект — иллюстрация, не отдельный экран */
+  .object{
+    order:3!important;width:100%!important;height:132px!important;
+    margin:4px 0 0!important;border-radius:18px!important;overflow:hidden!important;
+    position:relative!important;
+  }
+  .object img{width:100%!important;height:100%!important;object-fit:cover!important;display:block!important}
+
+  /* Технология: основное фото + два вспомогательных */
+  .gallery{
+    display:grid!important;
+    grid-template-columns:1fr 1fr!important;
+    grid-template-rows:170px 104px!important;
+    gap:7px!important;width:auto!important;
+    margin:0!important;padding:8px 12px 12px!important;
+  }
+  .gallery .ref{
+    position:relative!important;min-width:0!important;min-height:0!important;
+    width:100%!important;height:100%!important;margin:0!important;
+    border-radius:15px!important;overflow:hidden!important;
+  }
+  .gallery .ref:nth-child(2){
+    grid-column:1 / -1!important;grid-row:1!important;
+  }
+  .gallery .ref:nth-child(1){grid-column:1!important;grid-row:2!important}
+  .gallery .ref:nth-child(3){grid-column:2!important;grid-row:2!important}
+  .gallery .ref img{
+    width:100%!important;height:100%!important;display:block!important;
+    object-fit:cover!important;object-position:center!important;
+  }
+  .gallery .tag{
+    position:absolute!important;left:8px!important;bottom:8px!important;right:auto!important;top:auto!important;
+    max-width:80%!important;margin:0!important;padding:6px 9px!important;
+    border-radius:10px!important;font-size:11px!important;line-height:1.08!important;
+    white-space:normal!important;
+  }
+
+  /* Телефоны: обычный вертикальный поток */
+  .contacts{
+    display:flex!important;flex-direction:column!important;gap:8px!important;
+    width:100%!important;margin:0!important;padding:10px 12px 4px!important;
+    position:static!important;overflow:visible!important;
+  }
+  .phone-card{
+    display:block!important;position:static!important;width:100%!important;
+    margin:0!important;padding:12px!important;border-radius:18px!important;
+    overflow:hidden!important;
+  }
+  .phone-top{
+    display:grid!important;grid-template-columns:44px minmax(0,1fr)!important;
+    gap:10px!important;align-items:center!important;width:100%!important;
+  }
+  .phone-icon{
+    width:44px!important;height:44px!important;min-width:44px!important;
+    position:static!important;margin:0!important;
+  }
+  .phone-label{font-size:12px!important;line-height:1.1!important;margin:0 0 2px!important}
+  .phone-number{
+    display:block!important;width:100%!important;
+    font-size:23px!important;line-height:1!important;letter-spacing:-.7px!important;
+    white-space:nowrap!important;overflow:visible!important;
+  }
+  .phone-actions{
+    display:grid!important;grid-template-columns:repeat(2,minmax(0,1fr))!important;
+    gap:7px!important;margin:9px 0 0!important;width:100%!important;
+  }
+  .phone-card:nth-child(2) .phone-actions{
+    grid-template-columns:repeat(3,minmax(0,1fr))!important;
+  }
+  .phone-actions a{
+    display:flex!important;align-items:center!important;justify-content:center!important;
+    min-width:0!important;min-height:42px!important;padding:7px 5px!important;
+    margin:0!important;font-size:14px!important;line-height:1!important;
+    white-space:nowrap!important;border-radius:12px!important;
+  }
+
+  /* Действия: две колонки, без наложений */
+  .actions{
+    display:grid!important;grid-template-columns:repeat(2,minmax(0,1fr))!important;
+    gap:8px!important;width:100%!important;margin:0!important;
+    padding:8px 12px 18px!important;position:static!important;
+  }
+  .action{
+    display:flex!important;position:static!important;align-items:center!important;
+    min-width:0!important;width:100%!important;min-height:72px!important;
+    margin:0!important;padding:10px!important;border-radius:16px!important;
+    overflow:hidden!important;
+  }
+  .action .ico{
+    flex:0 0 34px!important;width:34px!important;height:34px!important;
+    min-width:34px!important;margin-right:8px!important;font-size:17px!important;
+    position:static!important;
+  }
+  .action>div:last-child{min-width:0!important}
+  .action b{display:block!important;font-size:13px!important;line-height:1.08!important}
+  .action span{
+    display:block!important;font-size:11.5px!important;line-height:1.15!important;
+    overflow-wrap:anywhere!important;word-break:normal!important;
+  }
+
+  /* Никаких старых трансформаций/сдвигов */
+  .hero,.profile,.object,.gallery,.contacts,.phone-card,.actions,.action{
+    transform:none!important;left:auto!important;right:auto!important;top:auto!important;bottom:auto!important;
+  }
+}
+
+/* Рабочий QR modal */
+.qr-action{font:inherit;text-align:left;border:0;cursor:pointer}
+.qr-modal{
+  display:none;position:fixed;inset:0;background:rgba(0,25,18,.72);
+  z-index:9999;align-items:center;justify-content:center;padding:24px
+}
 .qr-modal.open{display:flex}
-.qr-box{position:relative;background:#fff;border-radius:28px;padding:28px;max-width:340px;width:100%;text-align:center;box-shadow:0 24px 80px rgba(0,0,0,.28)}
-.qr-box img{width:min(260px,80vw);height:auto;display:block;margin:0 auto 12px}
+.qr-box{
+  position:relative;background:#fff;border-radius:26px;padding:26px;
+  max-width:340px;width:100%;text-align:center;box-shadow:0 24px 80px rgba(0,0,0,.28)
+}
+.qr-box img{width:min(250px,78vw);height:auto;display:block;margin:0 auto 12px}
 .qr-box b,.qr-box span{display:block}.qr-box span{color:#6e7b88;margin-top:6px}
 .qr-close{position:absolute;right:12px;top:8px;border:0;background:transparent;font-size:32px;line-height:1;cursor:pointer}
-
-@media (max-width: 700px){
-  body{background:#f5f0e5}
-  .wrap{width:100%;max-width:520px;margin:0 auto;background:#fffdf8;overflow:hidden}
-  .hero{grid-template-columns:1fr !important;padding:18px 18px 12px !important;gap:10px !important}
-  .brand{order:1}
-  .profile{order:2;display:grid !important;grid-template-columns:112px 1fr !important;gap:16px !important;align-items:center !important}
-  .portrait{width:112px !important;height:112px !important;margin:0 !important}
-  .identity{text-align:left !important}
-  .identity h1{font-size:31px !important;line-height:.98 !important;margin:0 0 8px !important}
-  .identity .role{font-size:15px !important;line-height:1.15 !important}
-  .identity .company,.identity .desc{font-size:14px !important;line-height:1.25 !important}
-  .object{order:3;height:150px !important;border-radius:20px !important;overflow:hidden}
-  .object img{width:100%;height:100%;object-fit:cover}
-  .gallery{display:grid !important;grid-template-columns:repeat(3,1fr) !important;gap:6px !important;padding:8px 12px 12px !important}
-  .gallery .ref{height:112px !important;min-height:0 !important;border-radius:14px !important;overflow:hidden}
-  .gallery img{width:100%;height:100%;object-fit:cover}
-  .gallery .tag{font-size:10px !important;padding:6px 8px !important;line-height:1.05 !important}
-  .contacts{grid-template-columns:1fr !important;gap:9px !important;padding:0 12px !important}
-  .phone-card{padding:13px !important;border-radius:20px !important}
-  .phone-top{display:grid !important;grid-template-columns:50px 1fr !important;align-items:center !important;gap:10px !important}
-  .phone-icon{width:50px !important;height:50px !important}
-  .phone-label{font-size:13px !important}
-  .phone-number{font-size:25px !important;line-height:1 !important;white-space:nowrap !important;letter-spacing:-.5px}
-  .phone-actions{gap:7px !important;margin-top:10px !important}
-  .phone-actions a{min-height:44px !important;font-size:15px !important;padding:0 8px !important}
-  .actions{display:grid !important;grid-template-columns:repeat(2,minmax(0,1fr)) !important;gap:8px !important;padding:10px 12px 18px !important}
-  .action{min-width:0 !important;padding:11px !important;border-radius:17px !important;min-height:76px !important}
-  .action .ico{width:38px !important;height:38px !important;min-width:38px !important;font-size:19px !important}
-  .action b{font-size:14px !important;line-height:1.1 !important}
-  .action span{font-size:12px !important;line-height:1.15 !important;overflow-wrap:anywhere}
-}
 </style>
 
 </head><body><div class="wrap">
