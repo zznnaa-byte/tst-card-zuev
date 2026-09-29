@@ -1,0 +1,29 @@
+<!doctype html><html lang="ru"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Алексей Зуев — ООО «ТСТ»</title><style>
+*{box-sizing:border-box}body{margin:0;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Arial,sans-serif;background:#f4f0e8;color:#092b55}
+.wrap{max-width:1180px;margin:auto;background:#fff}.top{display:grid;grid-template-columns:300px 1fr 430px;min-height:360px;background:linear-gradient(90deg,#fff,#fffdf7)}
+.left{text-align:center;padding:24px}.brand{font-size:54px;font-weight:900;color:#064d3b}.portrait{width:245px;height:245px;border-radius:50%;object-fit:cover;object-position:center;border:8px solid #fff;outline:5px solid #07804f}
+.info{padding:125px 15px 15px}.info h1{font-size:44px;line-height:1;margin:0 0 14px}.role{font-size:21px;font-weight:900;color:#ff6500;text-transform:uppercase}.company,.desc{font-size:20px;margin-top:8px;line-height:1.3}
+.object{width:100%;height:360px;object-fit:cover}.gallery{display:grid;grid-template-columns:1.05fr 1fr 1fr;gap:8px;padding:8px}.gallery img{width:100%;height:245px;object-fit:cover;border-radius:14px}
+.ref{position:relative;overflow:hidden;border-radius:14px}.ref img{width:100%;height:245px;object-fit:cover}.badge{position:absolute;left:18px;bottom:16px;background:#075a40;color:#fff;padding:8px 16px;border-radius:16px;font-weight:800}
+.actions{background:#f5efe4;padding:15px}.phones{display:grid;grid-template-columns:1fr 1fr;gap:14px}.card,.tile{background:#fff;border-radius:18px;padding:16px}.head{display:flex;gap:14px;align-items:center}.bubble{width:58px;height:58px;border-radius:50%;display:grid;place-items:center;background:#159d17;color:#fff;font-size:28px}.orange{background:#ff7800}.muted{color:#788595}.num{font-size:26px;font-weight:900}.buttons{display:flex;gap:9px;margin-top:12px}.btn{flex:1;text-align:center;padding:12px;border-radius:11px;background:#00764e;color:#fff;font-weight:800;text-decoration:none}.wa{background:#08ae5b}.max{background:#6844ed}
+.grid{display:grid;grid-template-columns:repeat(4,1fr);gap:11px;margin-top:13px}.tile{display:flex;gap:10px;align-items:center;text-decoration:none;color:#092b55}.tile b{display:block}.tile span{font-size:13px;color:#728095}.blue{color:#087fe1!important}
+@media(max-width:850px){.top{grid-template-columns:1fr}.info{padding:10px 20px 25px;text-align:center}.object{height:270px}.gallery{grid-template-columns:1fr}.phones{grid-template-columns:1fr}.grid{grid-template-columns:1fr 1fr}}
+</style></head><body><div class="wrap">
+<div class="top"><div class="left"><div class="brand">▰▰▰ ТСТ</div><img class="portrait" src="portrait.jpg"></div>
+<div class="info"><h1>Зуев<br>Алексей Юрьевич</h1><div class="role">Заместитель генерального директора</div><div class="company">ООО «ТСТ»</div><div class="desc">Промышленные технологии<br>для производства термоструктурных<br>самонесущих панелей (ТСП)</div></div>
+<img class="object" src="object.png"></div>
+<div class="gallery"><img src="panels.png"><div class="ref"><img src="master-reference.png" style="object-position:center 57%"><div class="badge">Ручной монтаж<br>без специальной техники</div></div><img src="master-reference.png" style="object-position:right 56%"></div>
+<div class="actions"><div class="phones">
+<div class="card"><div class="head"><div class="bubble">☎</div><div><div class="muted">Основной номер</div><div class="num">+7 (916) 404-33-57</div></div></div><div class="buttons"><a class="btn" href="tel:+79164043357">Позвонить</a><a class="btn wa" href="https://wa.me/79164043357">WhatsApp</a></div></div>
+<div class="card"><div class="head"><div class="bubble orange">☎</div><div><div class="muted">Дополнительный номер</div><div class="num">+7 (962) 455-33-77</div></div></div><div class="buttons"><a class="btn orange" href="tel:+79624553377">Позвонить</a><a class="btn wa" href="https://wa.me/79624553377">WhatsApp</a><a class="btn max" href="https://max.ru/">MAX</a></div></div>
+</div><div class="grid">
+<a class="tile" href="https://t.me/technoStroim"><div>✈️</div><div><b>Telegram</b><span class="blue">@technoStroim</span></div></a>
+<a class="tile" href="mailto:zznnaa@mail.ru"><div>✉️</div><div><b>Написать письмо</b><span class="blue">zznnaa@mail.ru</span></div></a>
+<a class="tile" href="zuev-alexey.vcf" download><div>👤</div><div><b>Сохранить контакт</b><span>Добавить в телефон (vCard)</span></div></a>
+<a class="tile" href="https://zznnaa-byte.github.io/tst/"><div>🌐</div><div><b>Сайт компании</b><span class="blue">zznnaa-byte.github.io/tst/</span></div></a>
+<button class="tile" onclick="shareCard()" style="border:0;text-align:left"><div>↗️</div><div><b>Поделиться</b><span>Отправить визитку</span></div></button>
+<div class="tile"><div>▦</div><div><b>QR-код</b><span>Настроим после публикации</span></div></div>
+</div></div></div>
+<script>async function shareCard(){const d={title:'Алексей Зуев — ООО «ТСТ»',text:'Электронная визитка Алексея Зуева, ООО «ТСТ»',url:location.href};if(navigator.share){try{await navigator.share(d)}catch(e){}}else{await navigator.clipboard.writeText(location.href);alert('Ссылка скопирована')}}</script>
+</body></html>
